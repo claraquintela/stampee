@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use Error;
+use Twig\Error\Error as ErrorError;
+
 abstract class CRUD extends \PDO
 {
 
@@ -10,7 +13,7 @@ abstract class CRUD extends \PDO
         parent::__construct('mysql:host=localhost;dbname=stampee;port=3308;charset=utf8', 'root', '');
     }
 
-    final public function select($field = null, $order = 'asc')
+    final public function select($field = null, $order = 'desc')
     {
         if ($field == null) {
             $field = $this->primaryKey;
@@ -37,12 +40,23 @@ abstract class CRUD extends \PDO
         }
     }
 
+    final public function selectByUser($value)
+    {
+        $sql = "SELECT * FROM $this->table WHERE stampee_users_id = $value";
+        if ($stmt = $this->query($sql)) {
+            return $stmt->fetchAll();
+        } else {
+            return false;
+        }
+    }
+
     public function insert($data)
     {
         $data_keys = array_fill_keys($this->fillable, '');
         $data = array_intersect_key($data, $data_keys);
         $fieldName = implode(', ', array_keys($data));
         $fieldValue = ':' . implode(', :', array_keys($data));
+
         $sql = "INSERT INTO $this->table ($fieldName) VALUES ($fieldValue);";
         $stmt = $this->prepare($sql);
         foreach ($data as $key => $value) {

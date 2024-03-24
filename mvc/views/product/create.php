@@ -4,7 +4,7 @@
 
     <div class="container-form-create-produit">
         <h2>Ajouter un produit</h2>
-        <form method="post" class="form-create-product">
+        <form method="post" class="form-create-product" enctype="multipart/form-data">
 
             <div>
                 <label>Nom du produit* :
@@ -12,14 +12,6 @@
                 </label>
                 {% if errors.nom is defined %}
                 <span class="error">{{ errors.nom }}</span>
-                {% endif %}
-            </div>
-            <div>
-                <label>Identifiant* :
-                    <input type="text" name="identifiant" required>{{ product.identifiant }}</input>
-                </label>
-                {% if errors.identifiant is defined %}
-                <span class="error">{{ errors.identifiant }}</span>
                 {% endif %}
             </div>
             <div>
@@ -40,18 +32,36 @@
                 {% endif %}
             </div>
             <div>
+                <label>Pays* :
+                    <input type="text" name="pays" value="{{ product.pays }}" required>
+                </label>
+                {% if errors.pays is defined %}
+                <span class="error">{{ errors.pays }}</span>
+                {% endif %}
+            </div>
+
+            <div>
+                <label>Année* :
+                    <input type="text" name="annee" value="{{ product.annee }}" required>
+                </label>
+                {% if errors.annee is defined %}
+                <span class="error">{{ errors.annee }}</span>
+                {% endif %}
+            </div>
+            <div>
                 <label>Condition du timbre* :</label>
-                <select name="condition" required>
+                <select name="condition_timbre" required>
                     <option>Sélectionner une option</option>
-                    <option value="nouveau">Nouveau</option>
-                    <option value="excellent">Excellent</option>
-                    <option value="endommagé">Légèrement endommagé</option>
-                    <option value="abîmé">Abîmé</option>
+                    <option value="Excellent">Excellent</option>
+                    <option value="Bon">Bon</option>
+                    <option value="Endommagé">Légèrement endommagé</option>
+                    <option value="Abîmé">Abîmé</option>
                 </select>
             </div>
             <div>
                 <label for="certifie">Ce timbre est certifié?
-                    <input type="checkbox" id="certifie" name="certifie" value="Oui" required>OUI
+                    <input type="checkbox" id="certifie" name="certifie" value="Oui">OUI
+                    <input type="checkbox" id="certifie" name="certifie" value="Non">NON
                 </label>
             </div>
 

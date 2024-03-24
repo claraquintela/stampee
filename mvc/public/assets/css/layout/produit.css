@@ -281,6 +281,43 @@
     }
 }
 
+.container-mes-produits {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 4rem;
+
+    & h1{
+        color: var(--dore);
+    }
+
+    
+}
+
+.table-mes-produits{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #133636;
+    box-shadow: 0px 1px 4px 1px var(--dore);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem;
+    background-color: var(--dore);
+    font-family: var(--police-principale);
+    border-collapse: collapse; 
+
+    & th {
+        font-weight: 800;
+    }
+
+    & th, td {
+        border: 1px solid black;
+        padding: 1rem;
+    }
+}
 
 
 

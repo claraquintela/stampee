@@ -35,6 +35,8 @@ class AuthController
             return View::render('auth/index', ['errors' => $errors, 'user' => $data]);
         }
     }
+
+    
     public function delete()
     {
         session_destroy();

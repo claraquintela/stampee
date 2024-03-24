@@ -91,10 +91,13 @@ class Validator
 
     public function uploadImage($postFiles)
     {
+        error_log(print_r($postFiles, true));
         $target_dir = "uploads/";
         $target_file = $target_dir . basename($this->value);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        error_log($imageFileType);
 
         // Check if image file is a actual image or fake image
         $check = getimagesize($postFiles["image"]["tmp_name"]);

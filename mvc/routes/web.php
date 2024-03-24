@@ -8,7 +8,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
 
-//
+//Encheres
 Route::get('/client', 'ClientController@index');
 Route::get('/client/show', 'ClientController@show');
 Route::get('/client/create', 'ClientController@create');
@@ -25,8 +25,10 @@ Route::get('/logout', 'AuthController@delete');
 
 
 //Product
+Route::get('/product/index', 'ProductController@index');
 Route::get('/product/create', 'ProductController@create');
 Route::post('/product/create', 'ProductController@store');
+
 
 // User
 Route::get('/user', 'UserController@index');
