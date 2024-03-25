@@ -13,6 +13,7 @@ class ClientController
     public function __construct(){
         Auth::session();
     }
+    
     public function index()
     {
         if (Auth::session()) {
@@ -87,6 +88,8 @@ class ClientController
             return View::render('error', ['message' => 'Could not find this data']);
         }
     }
+
+
     public function update($data, $get)
     {
         // $get['id'];
@@ -112,6 +115,7 @@ class ClientController
             return View::render('client/edit', ['errors' => $errors, 'client' => $data]);
         }
     }
+    
 
     public function delete($data)
     {

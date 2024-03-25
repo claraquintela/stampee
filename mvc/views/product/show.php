@@ -1,16 +1,22 @@
-{{ include('layouts/header.php', {title: 'Client Create'})}}
-    <div class="container">
-        <h2>Client Show</h2>
-        <hr>
-        <p><strong>Name:</strong> {{ client.name }}</p>
-        <p><strong>Address:</strong> {{ client.address }}</p>
-        <p><strong>Zip Code:</strong> {{ client.zip_code }}</p>
-        <p><strong>Phone:</strong> {{ client.phone }}</p>
-        <p><strong>Email:</strong> {{ client.email }}</p>
-        <a href="{{base}}/client/edit?id={{client.id}}" class="btn block">Edit</a>
-        <form action="{{base}}/client/delete" method="post">
-            <input type="hidden" name="id" value="{{ client.id }}">
-            <button class="btn block red">Delete</button>
-        </form>
+{{ include('layouts/header.php', {title: 'Produit'})}}
+<div class="container-editer-produit">
+    <h2>Produit</h2>
+    <div class="box-editer-produit">
+        <p><span class="p-strong">Nom:</span> {{ product.nom }}</p>
+        <p><span class="p-strong">Description:</span> {{ product.description }}</p>
+        <p><span class="p-strong">Pays:</span> {{ product.pays }}</p>
+        <p><span class="p-strong">Année:</span> {{ product.annee }}</p>
+        <p><span class="p-strong">Condition:</span> {{ product.condition_timbre }}</p>
+        <p><span class="p-strong">Certifié:</span> {{ product.certifie }}</p>
+        <p><span class="p-strong">Prix:</span> {{ product.prix }}</p>
+
+        <div class="btns-editer-produit">
+            <a href="{{base}}/product/edit?id={{product.id}}" class="btn block">Edit</a>
+            <form action="{{base}}/product/delete" method="post">
+                <input type="hidden" name="id" value="{{ product.id }}">
+                <button class="btn block red">Delete</button>
+            </form>
+        </div>
     </div>
+</div>
 {{ include('layouts/footer.php') }}

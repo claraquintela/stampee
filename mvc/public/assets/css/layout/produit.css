@@ -293,7 +293,6 @@
         color: var(--dore);
     }
 
-    
 }
 
 .table-mes-produits{
@@ -320,6 +319,82 @@
 }
 
 
+/* Show produit individuel*/
+
+.container-editer-produit{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem;
+
+}
+
+.box-editer-produit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0px 1px 4px 1px var(--dore);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem;
+    background-color: var(--dore);
+    font-family: var(--police-principale);
+    width: 45rem;
+}
+
+.btns-editer-produit{
+    display: flex;
+    gap: 4rem;
+    margin-top: 2rem;
+}
+
+.p-strong{
+    font-weight: 800;
+}
+
+/*Edit produit*/
+
+.form-edit-product{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    max-width: 45rem;
+    background-color: #133636;
+    box-shadow: 0px 1px 4px 1px var(--dore);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem;
+
+    & div{
+        margin: 2rem;
+    }
+
+    & textarea{
+        width: 30rem;
+        margin-top: 1rem;
+        margin-left:1rem;
+        height: 20rem;
+    }
+
+    & input {
+        margin-top: 1rem;
+        margin-left:1rem;
+        width: 20rem;
+    }
+
+    & p {
+        margin: 2rem;
+        color: var(--blanc);
+        font-size: var(--police-s)
+    }
+
+    & #certifie{
+       margin: 0;
+       width: 5rem;
+    }
+}
 
 @media only screen and (max-width: 1100px) {
 

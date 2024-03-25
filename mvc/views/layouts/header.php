@@ -37,19 +37,19 @@
 
 
         {% if guest is empty %}
-
-        <a href="./logout">
+        <a href="{{base}}/logout">
           <i class="fa-solid fa-user-slash icon_img1" role="img" aria-label="icon inscription ou connexion"></i>
         </a>
         <div class="header-user-loggedin">
-          <p class="header-salutation">Hello {{ session.user_name }}!</p>
+          <p class="header-salutation">Hello, {{ session.user_name }}!</p>
 
-          <a href="./product/create" class="header-creer-enchere">Créer un enchère</a>
+          <a href="{{base}}/product/index" class="header-creer-enchere">Mes enchères</a>
         </div>
       </div>
       {% else %}
-      <a href="./login">
+      <a href="{{base}}/login">
         <i class="fa-solid fa-user icon_img1" role="img" aria-label="icon inscription ou connexion"></i></a>
+      <a href="{{base}}/user/create" class="header-creer-enchere">Créer une compte</a>
     </div>
     {% endif %}
 
@@ -59,10 +59,10 @@
 
     <div class="header-nav">
       <ul>
-        <li><a href="./">Home</a></li>
-        <li><a href="./pages/catalogue.html">Catalogue</a></li>
-        <li><a href="./pages/apropos.html">À propos</a></li>
-        <li><a href="./pages/contact.html">Contact</a></li>
+        <li><a href="{{base}}">Home</a></li>
+        <li><a href="{{base}}/catalogue">Catalogue</a></li>
+        <li><a href="{{base}}/apropos">À propos</a></li>
+        <li><a href="{{base}}/contact">Contact</a></li>
       </ul>
     </div>
   </header>

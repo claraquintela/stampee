@@ -16,7 +16,7 @@
 
         {% for product in product%}
         <tr>
-            <td><a href="{{BASE}}product/show?id={{product.id}}">{{ product.nom }}</a></td>
+            <td><a href="{{BASE}}show?id={{product.id}}">{{ product.nom }}</a></td>
             <td>{{ product['description'] }}</td>
             <td>{{ product['annee'] }}</td>
             <td>{{ product['pays'] }}</td>
