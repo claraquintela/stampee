@@ -10,8 +10,12 @@ class Product extends CRUD
     protected $primaryKey = 'id';
     protected $fillable = [
         'nom', 'description', 'annee', 'pays', 'certifie',
-        'condition_timbre', 'stampee_users_id', 'prix', 'dateTime'
+        'condition_timbre', 'stampee_users_id', 'prix', 'dateTime', 'status'
     ];
+
+    const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 1;
+    const STATUS_SOLD = 2;
 
 
     public function insert($data)
@@ -32,6 +36,20 @@ class Product extends CRUD
             } else {
                 return false;
             }
+        } else {
+            return false;
+        }
+    }
+
+    public function getImage($id)
+    {
+        $sql = "SELECT * FROM stampee_images WHERE stampee_produit_id = $id";
+
+        if ($stmt = $this->query($sql)) {
+
+            $queryResults = $stmt->fetchAll();
+
+            return $queryResults[0]['image'];
         } else {
             return false;
         }

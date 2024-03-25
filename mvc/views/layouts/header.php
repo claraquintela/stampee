@@ -60,7 +60,7 @@
     <div class="header-nav">
       <ul>
         <li><a href="{{base}}">Home</a></li>
-        <li><a href="{{base}}/catalogue">Catalogue</a></li>
+        <li><a href="{{base}}/enchere">Catalogue</a></li>
         <li><a href="{{base}}/apropos">À propos</a></li>
         <li><a href="{{base}}/contact">Contact</a></li>
       </ul>

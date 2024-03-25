@@ -1,5 +1,6 @@
 {{ include('layouts/header.php', {title: 'Mes produits'}) }}
 
+
 <div class="container-mes-produits">
     <h1>Mes produits</h1>
     <table class="table-mes-produits">
@@ -12,6 +13,7 @@
             <th>Certifié</th>
             <th>Condition</th>
             <th>Prix</th>
+            <th>Enchère</th>
         </tr>
 
         {% for product in product%}
@@ -23,6 +25,18 @@
             <td>{{ product['certifie'] }}</td>
             <td>{{ product['condition_timbre'] }}</td>
             <td>{{ product['prix'] }}</td>
+
+            {% if product['status'] ==  constant('App\\Models\\Product::STATUS_INACTIVE')  %}
+            <td>
+                <form action="{{base}}/enchere/store?id={{product.id}}" method="post">
+
+                    <input type="submit" value="Activer enchère" class="btn">
+
+                </form>
+            </td>
+            {% else %}
+            <td><input type="submit" value="Déactiver enchère" class="btn"></td>
+            {% endif %}
         </tr>
         {% endfor %}
 

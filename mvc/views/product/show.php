@@ -10,6 +10,8 @@
         <p><span class="p-strong">Certifié:</span> {{ product.certifie }}</p>
         <p><span class="p-strong">Prix:</span> {{ product.prix }}</p>
 
+        <img src="{{base}}/uploads/{{image}}">
+
         <div class="btns-editer-produit">
             <a href="{{base}}/product/edit?id={{product.id}}" class="btn block">Edit</a>
             <form action="{{base}}/product/delete" method="post">

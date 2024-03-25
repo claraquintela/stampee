@@ -41,8 +41,8 @@ Route::get('/user/create', 'UserController@create');
 Route::post('/user/create', 'UserController@store');
 
 
-//catalogue
-Route::get('/catalogue', 'CatalogueController@index');
+// Enchere
+Route::get('/enchere', 'EnchereController@index');
 
 
 

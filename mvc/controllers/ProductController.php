@@ -72,8 +72,10 @@ class ProductController
         if (isset($data['id']) && $data['id'] != null) {
             $product = new Product;
             $selectId = $product->selectId($data['id']);
+            $image = $product->getImage($data['id']);
+
             if ($selectId) {
-                return View::render('product/show', ['product' => $selectId]);
+                return View::render('product/show', ['product' => $selectId, 'image' => $image]);
             } else {
                 return View::render('error');
             }

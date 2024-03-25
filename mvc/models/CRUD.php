@@ -40,6 +40,7 @@ abstract class CRUD extends \PDO
         }
     }
 
+    
     final public function selectByUser($value)
     {
         $sql = "SELECT * FROM $this->table WHERE stampee_users_id = $value";

@@ -1,7 +1,11 @@
 {{ include('layouts/header.php', {title: 'Ajouter un produit'}) }}
 
 <div class="container">
+    {% if !session.user_id %}
 
+    <p>Vous devez faire votre loggin</p>
+
+    {% else %}
     <div class="container-form-create-produit">
         <h2>Ajouter un produit</h2>
         <form method="post" class="form-create-product" enctype="multipart/form-data">
@@ -80,6 +84,8 @@
             <p>*Tous les champs marqués avec un * sont obligatoires</p>
         </form>
     </div>
+
+    {% endif %}
 </div>
 
 {{ include('layouts/footer.php') }}
