@@ -1,5 +1,5 @@
 {{ include('layouts/header.php', {title: 'Inscription'})}}
-<div class="container">
+<div class="container-form-create-produit">
     {% if errors is defined %}
     <div class="error">
         <ul>

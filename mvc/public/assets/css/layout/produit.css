@@ -6,6 +6,9 @@
     justify-content: center;
 }
 
+main{
+    justify-content: center;
+}
 
 /* .page-produit structure basique */
 .page-produit {
@@ -286,7 +289,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 90%;
     margin: 4rem;
 
     & h1{
@@ -327,6 +330,7 @@
     justify-content: center;
     align-items: center;
     margin: 4rem;
+    
 
 }
 
@@ -394,6 +398,10 @@
        margin: 0;
        width: 5rem;
     }
+}
+
+.editer-produit-image {
+    width: 20rem;
 }
 
 @media only screen and (max-width: 1100px) {

@@ -54,4 +54,16 @@ class Product extends CRUD
             return false;
         }
     }
+
+    public function updateStatusProduct($id, $status)
+    {
+        error_log("ID =  " . $id);
+        $sql = "UPDATE stampee_produit SET status = $status WHERE id = $id;";
+
+        if ($stmt = $this->query($sql)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

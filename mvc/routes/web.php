@@ -31,7 +31,7 @@ Route::post('/product/create', 'ProductController@store');
 Route::get('/product/show', 'ProductController@show');
 Route::get('/product/edit', 'ProductController@edit');
 Route::get('/product/update', 'ProductController@update');
-Route::get('/product/delete', 'ProductController@delete');
+Route::post('/product/delete', 'ProductController@delete');
 
 
 // User
@@ -43,6 +43,9 @@ Route::post('/user/create', 'UserController@store');
 
 // Enchere
 Route::get('/enchere', 'EnchereController@index');
+Route::post('/enchere/create', 'EnchereController@store');
+Route::post('/enchere/deactiver', 'EnchereController@deactiverEnchere');
+
 
 
 

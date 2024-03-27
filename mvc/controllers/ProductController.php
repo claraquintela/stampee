@@ -134,10 +134,13 @@ class ProductController
 
     public function delete($data)
     {
+        error_log("cade a data? " . $data);
         $product = new  Product;
         $delete = $product->delete($data['id']);
+
+        error_log($delete . " delete");
         if ($delete) {
-            return View::redirect('product');
+            return View::redirect('product/index');
         } else {
             return View::render('error');
         }

@@ -1,7 +1,7 @@
 {{ include('layouts/header.php', {title: 'Ajouter un produit'}) }}
 
 <div class="container">
-    {% if !session.user_id %}
+    {% if session.user_id == false %}
 
     <p>Vous devez faire votre loggin</p>
 

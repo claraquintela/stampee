@@ -6,7 +6,7 @@ use App\Models\Enchere;
 use App\Providers\View;
 use App\Providers\Validator;
 use App\Providers\Auth;
-
+use App\Models\Product;
 
 class EnchereController
 {
@@ -24,35 +24,46 @@ class EnchereController
         }
     }
 
-    public function store()
+    public function store($data)
     {
+        error_log("entrei na função store de enchere");
+        error_log($data['stampee_produit_id'] . "esta aqui é a data");
         $validator = new Validator;
         $data['dateTime'] = date('Y-m-d H:i:s');
-        $validator->field('nom', $data['nom'])->required()->min(2)->max(100);
-        $validator->field('description', $data['description'])->required()->max(255);
-        $validator->field('prix', $data['prix'])->required();
-        $validator->field('annee', $data['annee'])->required();
-        $validator->field('pays', $data['pays'])->required()->min(2)->max(50);
-        $validator->field('condition_timbre', $data['condition_timbre'])->required();
-
-
-        $data['image'] = $data['dateTime'] . $_FILES["image"]["name"];
-        $data['image'] = preg_replace('/[:\s\-]/', '',  $data['image']);
-
-        $validator->field('image', $data['image'])->uploadImage($_FILES);
+        $validator->field('prix', $data['prix'])->required()->min(2)->max(100);
 
         if ($validator->isSuccess()) {
-            $product = new Enchere;
-            $insert = $product->insert($data);
+            $enchere = new Enchere;
+            $insert = $enchere->insert($data);
 
             if ($insert) {
-                return View::redirect('product/index');
-            } else {
-                return View::render('error');
+
+                $product = new Product;
+                $updateStatus = $product->updateStatusProduct($data['stampee_produit_id'], $data['status']);
+
+                if ($updateStatus) {
+                    return View::redirect('product/index');
+                } else {
+                    return View::render('error');
+                }
             }
         } else {
             $errors = $validator->getErrors();
-            return View::render('product/create', ['errors' => $errors, 'product' => $data]);
+            return View::render('product/index', ['errors' => $errors, 'product' => $data]);
+        }
+    }
+
+
+    public function deactiverEnchere($data)
+    {
+        error_log($data['stampee_produit_id'] . "esta aqui é a data");
+        $product = new Product;
+        $updateStatus = $product->updateStatusProduct($data['stampee_produit_id'], $data['status']);
+
+        if ($updateStatus) {
+            return View::redirect('product/index');
+        } else {
+            return View::render('error');
         }
     }
 }
