@@ -1,6 +1,13 @@
 {{ include('layouts/header.php', {title: 'Mes produits'}) }}
 
 <main>
+
+    {% if product == false %}
+
+    <p> Vou n'avez pas encore aucun timbre ajouté</p>
+
+    {% else %}
+
     <div class="container-mes-produits">
         <h1>Mes produits</h1>
         <table class="table-mes-produits">
@@ -28,13 +35,16 @@
 
                 {% if product['status'] ==  constant('App\\Models\\Product::STATUS_INACTIVE')  %}
                 <td>
-                    <form action="{{base}}/enchere/create" method="post">
+                    <a href="{{base}}/enchere/create?stampee_produit_id={{product.id}}" class="btn">Activer enchère</a>
+
+                    <!-- <form action="{{base}}/enchere/create" method="get">
+
                         <input type="hidden" value="{{product.id}}" name="stampee_produit_id">
                         <input type="hidden" value="1" name="status">
                         <input type="hidden" value="{{product.prix}}" name="prix">
                         <input type="submit" value="Activer enchère" class="btn">
 
-                    </form>
+                    </form> -->
                 </td>
                 {% else %}
                 <td>
@@ -52,5 +62,5 @@
         </table>
         <a href="{{BASE}}create" class="btn">Ajouter un nouveau timbre</a>
     </div>
-
+    {% endif %}
     {{ include('layouts/footer.php') }}

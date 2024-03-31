@@ -8,6 +8,7 @@ use App\Models\Privilege;
 use App\Providers\View;
 use App\Providers\Validator;
 use App\Providers\Auth;
+use Error;
 
 class ProductController
 {
@@ -23,26 +24,30 @@ class ProductController
 
     public function store($data)
     {
+        error_log("x1");
+
         $validator = new Validator;
         $data['dateTime'] = date('Y-m-d H:i:s');
         $validator->field('nom', $data['nom'])->required()->min(2)->max(100);
-        $validator->field('description', $data['description'])->required()->max(255);
+        $validator->field('description', $data['description'])->required()->max(10000);
         $validator->field('prix', $data['prix'])->required();
         $validator->field('annee', $data['annee'])->required();
         $validator->field('pays', $data['pays'])->required()->min(2)->max(50);
         $validator->field('condition_timbre', $data['condition_timbre'])->required();
 
-
+        error_log(print_r($validator, true));
         $data['image'] = $data['dateTime'] . $_FILES["image"]["name"];
         $data['image'] = preg_replace('/[:\s\-]/', '',  $data['image']);
 
-        $validator->field('image', $data['image'])->uploadImage($_FILES);
 
         if ($validator->isSuccess()) {
             $product = new Product;
-            $insert = $product->insert($data);
 
+            $insert = $product->insert($data);
+            error_log("esse aqui é o insert " . $insert);
             if ($insert) {
+                $validator->field('image', $data['image'])->uploadImage($_FILES);
+
                 return View::redirect('product/index');
             } else {
                 return View::render('error');
@@ -133,12 +138,10 @@ class ProductController
     }
 
     public function delete($data)
-    {
-        error_log("cade a data? " . $data);
+    {       
         $product = new  Product;
         $delete = $product->delete($data['id']);
 
-        error_log($delete . " delete");
         if ($delete) {
             return View::redirect('product/index');
         } else {

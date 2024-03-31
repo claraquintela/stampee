@@ -22,6 +22,7 @@ class Product extends CRUD
     {
         $insert = parent::insert($data);
 
+        error_log($insert);
         if ($insert) {
             $image = new Image;
             $dataImage = array(
@@ -57,10 +58,18 @@ class Product extends CRUD
 
     public function updateStatusProduct($id, $status)
     {
-        error_log("ID =  " . $id);
         $sql = "UPDATE stampee_produit SET status = $status WHERE id = $id;";
 
         if ($stmt = $this->query($sql)) {
+
+            if ($status == 0) {
+                $enchere = new Enchere;
+                if ($enchere->deleteByProductId($id)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
             return true;
         } else {
             return false;

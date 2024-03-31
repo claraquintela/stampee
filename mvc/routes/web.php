@@ -43,10 +43,16 @@ Route::post('/user/create', 'UserController@store');
 
 // Enchere
 Route::get('/enchere', 'EnchereController@index');
-Route::post('/enchere/create', 'EnchereController@store');
+Route::get('/enchere/index', 'EnchereController@index');
 Route::post('/enchere/deactiver', 'EnchereController@deactiverEnchere');
+Route::get('/enchere/show', 'EnchereController@show');
+Route::get('/enchere/create', 'EnchereController@activer');
+Route::post('/enchere/create', 'EnchereController@store');
 
-
+//Miser
+Route::get('/mise', 'MiseController@index');
+Route::get('/mise/create', 'MiseController@create');
+Route::post('/mise/create', 'MiseController@store');
 
 
 

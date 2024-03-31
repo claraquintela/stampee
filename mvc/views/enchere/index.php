@@ -3,20 +3,34 @@
 
 {{ include('layouts/aside.php') }}
 
-<main class="main-grid">
+<main class="container-main">
 
-    {% for product in product%}
+    <div class="main-grid">
 
-    <div class="main-grid__tuile">
-        <div>
-            <img src="../assets/img/timbres/timbre6.webp" alt="Canada timbre" />
-            <h4>Stampee Senna</h4>
+        {% for item in data %}
+
+        <div class="main-grid__tuile">
+            <div>
+                <img src="{{base}}/uploads/{{item['image']}}" alt="" class="main-grid__image" />
+
+                <h3>{{item['product']['nom']}} </h3>
+                <div class="countdown">
+                    <h4>Temps restant:</h4>
+                    <div id="timer">
+                        <?php include 'timer.php'; 
+
+                        echo $countdown();
+                        ?>
+                    </div>
+                </div>
+
+            </div>
+            <a href="./produit.html" class="btn">Miser</a>
+            <a href="{{BASE}}enchere/show?id={{item['product']['id']}}" class="btn">En savoir plus</a>
         </div>
-        <a href="./produit.html" class="btn">Miser</a>
-        <a href="./produit.html" class="btn">En savoir plus</a>
+
+        {% endfor %}
     </div>
 
-    {% endfor %}
-
-
+    </section>
     {{ include('layouts/footer.php') }}

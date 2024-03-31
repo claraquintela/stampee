@@ -127,6 +127,7 @@ main{
     grid-area: 5 / 1 / 6 / 3;
     max-height: 200px;
     padding-left: 40px;
+    margin-top: 8rem;
 
 
     & img {
@@ -231,6 +232,35 @@ main{
         width: 90%;
         height: 90%;
         cursor: pointer;
+    }
+
+}
+
+.form-activer-enchere{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: baseline;
+    max-width: 45rem;
+    background-color: #133636;
+    box-shadow: 0px 1px 4px 1px var(--dore);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem;
+
+    & label {
+   
+        padding: 2rem;
+        margin: 1rem;
+    }
+
+    & input {
+        margin: 1rem;
+    }
+    
+    & .dure-enchere{
+        
+        margin: 2rem;
     }
 
 }

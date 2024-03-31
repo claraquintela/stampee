@@ -1,18 +1,14 @@
 {{ include('layouts/header.php', {title: 'Ajouter un produit'}) }}
 
 <div class="container">
-    {% if session.user_id == false %}
 
-    <p>Vous devez faire votre loggin</p>
-
-    {% else %}
     <div class="container-form-create-produit">
         <h2>Ajouter un produit</h2>
         <form method="post" class="form-create-product" enctype="multipart/form-data">
 
             <div>
                 <label>Nom du produit* :
-                    <input type="text" name="nom" value="{{ product.name }}" required>
+                    <input type="text" name="nom" value="{{ product.nom }}" required>
                 </label>
                 {% if errors.nom is defined %}
                 <span class="error">{{ errors.nom }}</span>
@@ -64,20 +60,20 @@
             </div>
             <div>
                 <label for="certifie">Ce timbre est certifié?
-                    <input type="checkbox" id="certifie" name="certifie" value="Oui">OUI
-                    <input type="checkbox" id="certifie" name="certifie" value="Non">NON
+                    <input type="radio" id="certifie" name="certifie" value="Oui">OUI
+                    <input type="radio" id="certifie" name="certifie" value="Non">NON
                 </label>
             </div>
 
             <div>
                 <label>
                     Sélectionnez une image:
-                    <input type="file" name="image" required>
+                    <input type="file" name="image">
                 </label>
             </div>
 
             <input type="hidden" name="stampee_users_id" value="{{session.user_id}}">
-
+            <input type="hidden" name="status" value="0">
 
             <input type="submit" class="btn" value="Enregistrer">
 
@@ -85,7 +81,7 @@
         </form>
     </div>
 
-    {% endif %}
+
 </div>
 
 {{ include('layouts/footer.php') }}
