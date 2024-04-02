@@ -13,7 +13,7 @@
 
             <div>
                 <div class="icon-produit">
-                    <div class="jaime">
+                    <div class="btn-jaime">
                         J'aime
                         <i class="fa-regular fa-heart"></i>
                     </div>

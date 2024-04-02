@@ -4,20 +4,37 @@
 
         <form method="post" class="form-activer-enchere">
             <h2>{{ product.nom }}</h2>
-            <label>Durée de l'enchère
-                <div class="dure-enchere">
-                    3 jours <input type="radio" name="duree-enchere" value="3" checked>
-                    7 jours <input type="radio" name="duree-enchere" value="7">
-                    15 jours <input type="radio" name="duree-enchere" value="15">
-                    30 jours <input type="radio" name="duree-enchere" value="30">
-                </div>
+
+            {% if enchere.prixActuel %}
+            <label>Offre actuel: {{enchere.prixActuel }}</label>
+
+            <label>Faites votre offre *
+                <br><br>
+                CAD$ <input type="number" name="offre" min="{{enchere.prixActuel}}" step="0.01" placeholder="{{enchere.prixActuel}}">
+                <p>Format correct pour mille dollars et cinquante-trois cents : 1,000.53</p>
             </label>
 
-            <input type="hidden" value="{{product.id}}" name="stampee_produit_id">
-            <input type="hidden" value="1" name="status">
-            <input type="hidden" value="{{product.prix}}" name="prix">
+            <input type="hidden" value="{{enchere.prixActuel}}" name="prix">
 
-            <input type="submit" value="Activer enchère" class="btn">
+            {% else %}
+
+            <label>Offre actuel: {{enchere.prix}}</label>
+            <label>Faites votre offre *
+                <br><br>
+                CAD$ <input type="number" name="offre" min="{{enchere.prixActuel}}" step="0.01" placeholder="{{enchere.prix}}">
+                <p>Format correct pour mille dollars et cinquante-trois cents : 1,000.53</p>
+            </label>
+            <input type="hidden" value="{{enchere.prix}}" name="prix">
+
+            {% endif %}
+            <input type="hidden" value="{{enchere.id}}" name="encheres_id">
+            <input type="hidden" value="{{session.user_id}}" name="stampee_users_id">
+
+
+
+            <input type="submit" value="Miser" class="btn">
+
+            <p>* Votre offre doit être plus grand que l'Offre actuel</p>
         </form>
 
     </div>

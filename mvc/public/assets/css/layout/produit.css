@@ -249,7 +249,6 @@ main{
     margin: 2rem;
 
     & label {
-   
         padding: 2rem;
         margin: 1rem;
     }
@@ -259,8 +258,12 @@ main{
     }
     
     & .dure-enchere{
-        
         margin: 2rem;
+    }
+
+    & p {
+        color: var(--dore);
+        font-size: 1rem;
     }
 
 }

@@ -12,6 +12,7 @@
   <!-- Pour production -->
   <!-- <link rel="stylesheet" href="build/css/stylesfinaux.css"> -->
   <link rel="stylesheet" href="{{ asset }}/assets/css/styles.css" />
+  <script src="{{asset}}/assets/js/timer.js" type="text/javascript"></script>
   <title>{{ var }}</title>
 </head>
 

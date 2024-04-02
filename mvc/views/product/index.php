@@ -36,15 +36,6 @@
                 {% if product['status'] ==  constant('App\\Models\\Product::STATUS_INACTIVE')  %}
                 <td>
                     <a href="{{base}}/enchere/create?stampee_produit_id={{product.id}}" class="btn">Activer enchère</a>
-
-                    <!-- <form action="{{base}}/enchere/create" method="get">
-
-                        <input type="hidden" value="{{product.id}}" name="stampee_produit_id">
-                        <input type="hidden" value="1" name="status">
-                        <input type="hidden" value="{{product.prix}}" name="prix">
-                        <input type="submit" value="Activer enchère" class="btn">
-
-                    </form> -->
                 </td>
                 {% else %}
                 <td>
@@ -61,6 +52,8 @@
 
         </table>
         <a href="{{BASE}}create" class="btn">Ajouter un nouveau timbre</a>
+        <br>
+        <a href="{{BASE}}mise" class="btn">Verifier mes enchères</a>
     </div>
     {% endif %}
     {{ include('layouts/footer.php') }}

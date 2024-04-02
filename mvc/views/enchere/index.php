@@ -16,16 +16,17 @@
                 <h3>{{item['product']['nom']}} </h3>
                 <div class="countdown">
                     <h4>Temps restant:</h4>
-                    <div id="timer">
-                        <?php include 'timer.php'; 
 
-                        echo $countdown();
-                        ?>
+                    <div>
+                        <p data-js-productId="{{item['product']['id']}}"></p>
+                        <script>
+                            countdown(`{{item['dateFinal']}}`, `{{item['product']['id']}}`);
+                        </script>
                     </div>
                 </div>
 
             </div>
-            <a href="./produit.html" class="btn">Miser</a>
+            <a href="{{BASE}}mise/create?id={{item['id']}}" class="btn">Miser</a>
             <a href="{{BASE}}enchere/show?id={{item['product']['id']}}" class="btn">En savoir plus</a>
         </div>
 

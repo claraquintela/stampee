@@ -21,4 +21,26 @@ class Enchere extends CRUD
             return false;
         }
     }
+
+    public function selectEnchereById($value)
+    {
+        $sql = "SELECT * FROM stampee_encheres WHERE id = $value";
+        if ($stmt = $this->query($sql)) {
+
+            return $stmt->fetchAll();
+        } else {
+            return false;
+        }
+    }
+
+    public function updatePrixActuel($prixActuel, $idEnchere)
+    {
+        $sql = "UPDATE stampee_encheres SET prixActuel = $prixActuel WHERE id = $idEnchere;";
+
+        if ($stmt = $this->query($sql)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

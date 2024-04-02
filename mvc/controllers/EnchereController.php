@@ -24,11 +24,14 @@ class EnchereController
             $selectId = $product->selectId($enchere['stampee_produit_id']);
             $image = $product->getImage($enchere['stampee_produit_id']);
 
+
             if ($selectId) {
                 // Adicionar os dados do produto e da imagem ao array de dados
                 $data[] = [
                     'product' => $selectId,
-                    'image' => $image
+                    'image' => $image,
+                    'id' => $enchere['id'],
+                    'dateFinal' => $enchere['dateFinal']
                 ];
             } else {
                 // Tratar o caso em que nenhum produto é encontrado
@@ -114,4 +117,14 @@ class EnchereController
             return View::render('error', ['message' => 'Could not find this data']);
         }
     }
+
+    public function like(){
+        
+    }
+
+    public function dislike(){
+
+    }
+
+
 }
